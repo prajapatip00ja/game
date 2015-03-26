@@ -7,15 +7,25 @@ public class VisualGrid {
         for(int i=0;i<3;i++){
             for(int j=0;j<3;j++){
                 grid[i][j]=" - ";
-                System.out.print(grid[i][j]);
             }
-            System.out.println();
         }
     }
 
-    public static void main(String[] args) {
-        VisualGrid visualGrid = new VisualGrid();
-        visualGrid.createGrid();
+
+    public void markPosition(int x, int y, int playerNumber){
+        grid[x][y] = (playerNumber==0) ? " 0 " : " X ";
+        System.out.println(showGrids());
+    }
+
+    private String showGrids(){
+        String gameView = "";
+        for (int i=0; i<3; i++){
+            for (int j=0; j<3; j++){
+                gameView += grid[i][j];
+            }
+            gameView +="\n";
+        }
+        return  gameView;
     }
 
 }
