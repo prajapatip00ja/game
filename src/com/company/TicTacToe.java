@@ -27,9 +27,11 @@ public class TicTacToe {
     }
 
     private static Point getPoint(int i ) {
+        VisualGrid grid = new VisualGrid();
         System.out.println("player"+(i%2+1));
         Scanner sc = new Scanner(System.in);
         String[] input = sc.nextLine().split("");
+        //System.out.println(grid.insertMark(Integer.parseInt(input[0]),Integer.parseInt(input[1]),i%2));
         return new Point(Integer.parseInt(input[0]), Integer.parseInt(input[1]));
     }
 }
