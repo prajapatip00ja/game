@@ -1,9 +1,14 @@
 package com.company;
 
-/**
- * Created by poojap on 3/25/2015.
- */
 public class abc {
+
+    public static void main(String[] args) {
+        StringBuilder name = new StringBuilder("vikas");
+        name.append("suryavanshi");
+        System.out.println(name);
+        name.setCharAt(5,'q');
+        System.out.println(name);
+    }
 
 //    private char grid[][] = new char[3][3];
 //    public TicTacToe() {

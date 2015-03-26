@@ -1,7 +1,5 @@
 package com.company;
-
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 public class Line {
@@ -24,19 +22,27 @@ public class Line {
             if(!line.containsPoint(p))
                 return false;
         }
-        return  true;
+        return true;
     }
 
     @Override
     public String toString() {
         String line = "";
-        for (Point p : this.line) {
+        for (Point p : this.line)
             line = line+p.toString();
-        }
         return line;
     }
 
     public int size(){
         return line.size();
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Line line1 = (Line) o;
+        return line.equals(line1.line);
+    }
+
 }
