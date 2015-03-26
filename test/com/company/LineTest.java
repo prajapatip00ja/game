@@ -15,12 +15,14 @@ public class LineTest {
     }
 
     @Test
-    public void containsPointReturnsTrueWhenPointIsNotOnTheLine(){
+    public void containsPointReturnsTueWhenPointIsNotOnTheLine(){
         Line l = new Line();
         l.addPoint(new Point(1,1));
         l.addPoint(new Point(1,2));
+
         assertTrue(l.containsPoint(new Point(1,2)));
         assertTrue(l.containsPoint(new Point(1,1)));
+        assertFalse(l.containsPoint(new Point(2,2)));
     }
 
     @Test
