@@ -27,7 +27,6 @@ public class Line {
         return  true;
     }
 
-
     @Override
     public String toString() {
         String line = "";

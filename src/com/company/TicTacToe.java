@@ -40,25 +40,15 @@ public class TicTacToe {
     public Boolean isEven(int number){
         return number % 2 == 0;
     }
-
-    public int isWin(Line player1, Line player2) {
-        return grid.whoIsWinner(player1, player2);
-    }
-
     public static void main(String[] args) {
         TicTacToe t = new TicTacToe();
-        Line player1 = new Line();
-        Line player2 = new Line();
+        GameGrid playerGrid = new GameGrid();
+        playerGrid.addLine(new Line());
+        playerGrid.addLine(new Line());
         for (int i=0; i<9; i++) {
-            if (t.isEven(i)) {
-                System.out.println("PLAYER 1:");
-                player1.addPoint(getPoint());
-            } else {
-                System.out.println("PLAYER 2:");
-                player2.addPoint(getPoint());
-            }
-            if (player1.size() >= 3 || player2.size() >= 3) {
-               int winner = t.isWin(player1, player2);
+            playerGrid.addPoint(getPoint(i), i%2);
+            if(playerGrid.isSizeGraterThanThree()) {
+                int winner = t.grid.whoIsWinner(playerGrid);
                 if(winner!=0){
                     System.out.println("player"+winner+" won");
                     System.exit(0);
@@ -68,7 +58,8 @@ public class TicTacToe {
         System.out.println("match tied");
     }
 
-    private static Point getPoint() {
+    private static Point getPoint(int i ) {
+        System.out.println("player"+(i%2+1));
         Scanner sc = new Scanner(System.in);
         String[] input = sc.nextLine().split("");
         return new Point(Integer.parseInt(input[0]), Integer.parseInt(input[1]));

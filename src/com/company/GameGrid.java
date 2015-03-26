@@ -1,6 +1,8 @@
 package com.company;
 
 
+import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,6 +21,10 @@ public class GameGrid {
         return  grids.size();
     }
 
+    public Line giveLineAt(int index){
+        return grids.get(index);
+    }
+
     @Override
     public String toString() {
         String line = "";
@@ -28,20 +34,21 @@ public class GameGrid {
         return line;
     }
 
-    public int whoIsWinner(Line player1, Line player2) {
-        int winner = 0;
+    public int whoIsWinner(GameGrid players) {
         for (Line grid : grids) {
-            if (grid.hasPointsOn(player1))
-                winner = 1;
-            if (grid.hasPointsOn(player2))
-                winner = 2;
+            if (grid.hasPointsOn(players.giveLineAt(0)))
+                return 1;
+            if (grid.hasPointsOn(players.giveLineAt(1)))
+                return 2;
         }
-        return winner;
+        return 0;
     }
 
-    public void addPoint() {
-        for (Line grid : grids) {
-            
-        }
+    public void addPoint(Point p,int i) {
+        grids.get(i).addPoint(p);
+    }
+
+    public Boolean isSizeGraterThanThree(){
+        return grids.get(0).size()>=3 || grids.get(1).size()>=3;
     }
 }
