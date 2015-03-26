@@ -3,14 +3,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Grid {
-    private List<Line> grids;
+    private List<Line> lines;
 
     public Grid() {
-        grids = new ArrayList<Line>();
+        lines = new ArrayList<Line>();
     }
 
     public void addLine(Line line){
-        grids.add(line);
+        lines.add(line);
     }
 
     public void createGrid(){
@@ -38,20 +38,20 @@ public class Grid {
     }
 
     public Line giveLineAt(int index){
-        return grids.get(index);
+        return lines.get(index);
     }
 
     @Override
     public String toString() {
         String line = "";
-        for (Line grid : grids) {
+        for (Line grid : lines) {
             line = line + grid.toString()+"\n";
         }
         return line;
     }
 
     public int giveWinner(Grid players) {
-        for (Line grid : grids) {
+        for (Line grid : lines) {
             if (grid.hasPointsOn(players.giveLineAt(0)))
                 return 1;
             if (grid.hasPointsOn(players.giveLineAt(1)))
@@ -61,10 +61,10 @@ public class Grid {
     }
 
     public void addPoint(Point p,int i) {
-        grids.get(i).addPoint(p);
+        lines.get(i).addPoint(p);
     }
 
     public Boolean isSizeGraterThanThree(int i){
-        return grids.get(i).size()>=3;
+        return lines.get(i).size()>=3;
     }
 }
