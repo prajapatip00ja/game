@@ -1,8 +1,5 @@
 package com.company;
 
-/**
- * Created by poojap on 3/24/2015.
- */
 public class Point {
     private int x;
     private int y;
@@ -21,12 +18,9 @@ public class Point {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Point)) return false;
-
         Point point = (Point) o;
-
         if (x != point.x) return false;
         if (y != point.y) return false;
-
         return true;
     }
 }
