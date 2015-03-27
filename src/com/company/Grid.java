@@ -37,9 +37,7 @@ public class Grid {
         grid.addLine(line2);
     }
 
-    public Line giveLineAt(int index){
-        return lines.get(index);
-    }
+
 
     @Override
     public String toString() {
@@ -50,21 +48,14 @@ public class Grid {
         return line;
     }
 
-    public int giveWinner(Grid players) {
-        for (Line grid : lines) {
-            if (grid.hasPointsOn(players.giveLineAt(0)))
+    public int giveWinner(Player player1, Player player2) {
+        for (Line line : lines) {
+            if (line.hasPointsOn(player1.getLine()))
                 return 1;
-            if (grid.hasPointsOn(players.giveLineAt(1)))
+            if (line.hasPointsOn(player2.getLine()))
                 return 2;
         }
         return 0;
     }
 
-    public void addPoint(Point p,int i) {
-        lines.get(i).addPoint(p);
-    }
-
-    public Boolean isSizeGraterThanThree(int i){
-        return lines.get(i).size()>=3;
-    }
 }
