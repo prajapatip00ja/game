@@ -50,9 +50,11 @@ public class Grid {
 
     public int giveWinner(Player player1, Player player2) {
         for (Line line : lines) {
-            if (line.hasPointsOn(player1.getLine()))
+            if (line.hasPointsOn(player1)){
+                System.out.println(line);
                 return 1;
-            if (line.hasPointsOn(player2.getLine()))
+            }
+            if (line.hasPointsOn(player2))
                 return 2;
         }
         return 0;

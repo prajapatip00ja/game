@@ -1,7 +1,9 @@
 package com.company;
 
 
-public class Player {
+import java.util.Iterator;
+
+public class Player implements Iterable{
     private Line line;
 
     public Player() {
@@ -16,7 +18,7 @@ public class Player {
         return line.size();
     }
 
-    public Line getLine() {
-        return line;
+    public Iterator<Point> iterator() {
+        return line.iterator();
     }
 }

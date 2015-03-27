@@ -14,16 +14,26 @@ public class Line implements Iterable<Point> {
         line.add(point);
     }
 
-    public Boolean containsPoint(Point point) {
-        return line.contains(point);
-    }
+//    public Boolean containsPoint(Point point) {
+//        return line.contains(point);
+//    }
 
-    public Boolean hasPointsOn(Line playerLine) {
-        for (Point point : line) {
-            if(!playerLine.containsPoint(point))
+    public Boolean hasPointsOn(Iterable<Point> playerLine) {
+        for (Point point1 : line) {
+           if(!containPoint(playerLine, point1)){
                 return false;
+           }
         }
         return true;
+    }
+
+    private Boolean containPoint(Iterable<Point> playerLine, Point point1) {
+        for (Point p : playerLine) {
+            if(p.equals(point1)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     @Override
