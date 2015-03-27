@@ -12,13 +12,15 @@ public class TicTacToe {
     public void run() {
         VisualGrid board = new VisualGrid();
         board.createGrid();
-        Grid playerGrid = new Grid();
-        playerGrid.addLine(new Line());
-        playerGrid.addLine(new Line());
+        Player player1 =new Player();
+        Player player2 =new Player();
         for (int i=0; i<9; i++) {
-            playerGrid.addPoint(getPoint(i,board), i%2);
-            if(playerGrid.isSizeGraterThanThree(i%2)) {
-                int winner = Gamegrid.giveWinner(playerGrid);
+            int playerTurn = i%2;
+            Point point = getPoint(playerTurn, board);
+            Player player = (playerTurn==0)?player1:player2;
+            player.addPoint(point);
+            if(player1.size()>=3 || player2.size()>=3 ) {
+                int winner = Gamegrid.giveWinner(player1,player2);
                 if(winner!=0){
                     System.out.println("player"+winner+" won");
                     System.exit(0);
@@ -28,11 +30,11 @@ public class TicTacToe {
         System.out.println("match tied");
     }
 
-    private static Point getPoint(int i,VisualGrid board ) {
+    private Point getPoint(int i,VisualGrid board ) {
         System.out.println("player"+(i%2+1));
         Scanner sc = new Scanner(System.in);
         String[] input = sc.nextLine().split("");
-        board.markPosition(Integer.parseInt(input[0])-1,Integer.parseInt(input[1])-111,i%2);
+        board.markPosition(Integer.parseInt(input[0])-1,Integer.parseInt(input[1])-1,i%2);
         return new Point(Integer.parseInt(input[0]), Integer.parseInt(input[1]));
     }
 }

@@ -1,9 +1,10 @@
 package com.company;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
-public class Line {
-   private List<Point> line;
+public class Line implements Iterable<Point> {
+    private List<Point> line;
 
     public Line() {
         this.line = new ArrayList<Point>();
@@ -13,13 +14,13 @@ public class Line {
         line.add(point);
     }
 
-    public Boolean containsPoint(Point point){
-     return  line.contains(point);
+    public Boolean containsPoint(Point point) {
+        return line.contains(point);
     }
 
-    public Boolean hasPointsOn(Line line){
-        for (Point p : this.line) {
-            if(!line.containsPoint(p))
+    public Boolean hasPointsOn(Line playerLine) {
+        for (Point point : line) {
+            if(!playerLine.containsPoint(point))
                 return false;
         }
         return true;
@@ -29,11 +30,11 @@ public class Line {
     public String toString() {
         String line = "";
         for (Point p : this.line)
-            line = line+p.toString();
+            line = line + p.toString();
         return line;
     }
 
-    public int size(){
+    public int size() {
         return line.size();
     }
 
@@ -45,4 +46,8 @@ public class Line {
         return line.equals(line1.line);
     }
 
+    @Override
+    public Iterator<Point> iterator() {
+        return line.iterator();
+    }
 }
